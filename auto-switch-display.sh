@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-USERNAME="${1:-hexa}"
+USERNAME="${1:-<username>}"
 USER_UID="$(id -u "$USERNAME")"
 STATE_FILE="/var/lib/teamviewer-display-monitor/state"
 LOG_TAG="tv-display-monitor"
