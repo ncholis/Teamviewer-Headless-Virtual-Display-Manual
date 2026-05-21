@@ -5,6 +5,7 @@ Wants=teamviewerd.service
 
 [Service]
 Type=simple
+# Replace <username> with the desktop user that should own the session.
 ExecStart=/usr/local/bin/auto-switch-display.sh --interval 10 --user <username>
 Restart=always
 RestartSec=5

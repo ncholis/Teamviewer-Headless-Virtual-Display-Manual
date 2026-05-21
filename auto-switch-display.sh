@@ -1,13 +1,58 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-USERNAME="${1:-<username>}"
-USER_UID="$(id -u "$USERNAME")"
+USERNAME=""
+USER_UID=""
 STATE_FILE="/var/lib/teamviewer-display-monitor/state"
 LOG_TAG="tv-display-monitor"
-CHECK_INTERVAL="${CHECK_INTERVAL:-5}"
+CHECK_INTERVAL="10"
 
-mkdir -p /var/lib/teamviewer-display-monitor
+usage() {
+  echo "Usage: sudo ./auto-switch-display.sh --interval <seconds> --user <username>"
+  echo "       sudo ./auto-switch-display.sh --user <username>"
+}
+
+parse_args() {
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --interval)
+        if [[ $# -lt 2 || -z "${2:-}" || "${2:-}" == --* ]]; then
+          usage
+          exit 1
+        fi
+        CHECK_INTERVAL="$2"
+        shift 2
+        ;;
+      --user)
+        if [[ $# -lt 2 || -z "${2:-}" || "${2:-}" == --* ]]; then
+          usage
+          exit 1
+        fi
+        USERNAME="$2"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Unknown argument: $1"
+        usage
+        exit 1
+        ;;
+    esac
+  done
+
+  if [[ -z "$USERNAME" ]]; then
+    usage
+    exit 1
+  fi
+
+  if ! [[ "$CHECK_INTERVAL" =~ ^[0-9]+$ ]] || [[ "$CHECK_INTERVAL" -lt 1 ]]; then
+    echo "--interval must be a positive integer"
+    exit 1
+  fi
+}
 
 log() {
   echo "[$(date '+%F %T')] $*" | systemd-cat -t "$LOG_TAG"
@@ -224,6 +269,8 @@ monitor_loop() {
 }
 
 main() {
+  parse_args "$@"
+
   if [[ $EUID -ne 0 ]]; then
     echo "Run as root"
     exit 1
@@ -233,6 +280,9 @@ main() {
     echo "User '$USERNAME' not found"
     exit 1
   fi
+
+  USER_UID="$(id -u "$USERNAME")"
+  mkdir -p /var/lib/teamviewer-display-monitor
 
   log "Starting display monitor for user: $USERNAME"
 

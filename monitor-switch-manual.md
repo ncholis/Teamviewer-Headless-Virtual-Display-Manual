@@ -54,7 +54,7 @@ sudo ./auto-switch-display.sh --interval 10 --user <username>
 - Service: `/etc/systemd/system/teamviewer-display-monitor.service`
 - Template dummy: `/etc/X11/xorg.conf.dummy-template`
 - Config aktif dummy: `/etc/X11/xorg.conf`
-- State file: `/var/lib/teamviewer-display-switch/state`
+- State file: `/var/lib/teamviewer-display-monitor/state`
 
 ## Monitoring status service
 
