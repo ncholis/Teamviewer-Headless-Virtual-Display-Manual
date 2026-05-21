@@ -55,11 +55,11 @@ Jika suatu saat monitor fisik ingin dipakai kembali, hapus konfigurasi dummy di 
 ## Security Note
 
 This setup may enable GDM auto-login for the selected desktop user.
-Use it only on trusted machines or controlled environments.
+Use it only on trusted or controlled machines.
 
 Before sharing your own configuration, remove:
 - real usernames
 - hostnames
 - IP addresses
 - TeamViewer IDs
-- passwords, tokens, or private keys
+- passwords, tokens, and private keys

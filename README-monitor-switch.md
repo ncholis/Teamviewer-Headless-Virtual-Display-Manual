@@ -21,7 +21,7 @@ This package adds automatic display switching for Ubuntu machines used headlessl
 
 ```bash
 chmod +x install-monitor-switch.sh auto-switch-display.sh
-sudo ./install-monitor-switch.sh hexa
+sudo ./install-monitor-switch.sh <username>
 ```
 
 ## Monitor logs
