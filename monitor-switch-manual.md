@@ -37,15 +37,15 @@ Jalankan installer berikut sebagai root:
 
 ```bash
 chmod +x install-monitor-switch.sh auto-switch-display.sh
-sudo ./install-monitor-switch.sh hexa
+sudo ./install-monitor-switch.sh <username>
 ```
 
-Ganti `hexa` dengan username GUI yang dipakai untuk auto-login.
+Ganti `<username>` dengan username GUI yang dipakai untuk auto-login.
 
 ## Menjalankan manual tanpa install service
 
 ```bash
-sudo ./auto-switch-display.sh --interval 10 --user hexa
+sudo ./auto-switch-display.sh --interval 10 --user <username>
 ```
 
 ## Lokasi file setelah instalasi
