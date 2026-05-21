@@ -50,10 +50,10 @@ Isi bagian `[daemon]` seperti ini:
 [daemon]
 WaylandEnable=false
 AutomaticLoginEnable=true
-AutomaticLogin=hexa
+AutomaticLogin=<username>
 ```
 
-Ganti `hexa` dengan username yang dipakai.
+Ganti `<username>` dengan username yang dipakai.
 
 Restart GDM:
 
@@ -149,7 +149,7 @@ loginctl list-sessions
 Pastikan user desktop muncul di `seat0`, misalnya:
 
 ```text
-5 1000 hexa seat0 tty2 active no -
+5 1000 <username> seat0 tty2 active no -
 ```
 
 ## 10. Jika Ingin Kembali ke Monitor Fisik
