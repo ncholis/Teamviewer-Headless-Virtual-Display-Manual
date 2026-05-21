@@ -5,7 +5,7 @@ Wants=teamviewerd.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/auto-switch-display.sh --interval 10 --user hexa
+ExecStart=/usr/local/bin/auto-switch-display.sh --interval 10 --user <username>
 Restart=always
 RestartSec=5
 User=root
