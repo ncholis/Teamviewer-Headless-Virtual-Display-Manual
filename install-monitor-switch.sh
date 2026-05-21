@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-USERNAME="${1:-hexa}"
+USERNAME="${1:-<username>}"
 
 if [[ $EUID -ne 0 ]]; then
   echo "Run as root"
