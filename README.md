@@ -17,10 +17,10 @@ Panduan singkat untuk mengatasi TeamViewer black screen pada Ubuntu headless den
 
 ```bash
 chmod +x auto-install.sh
-sudo ./auto-install.sh hexa
+sudo ./auto-install.sh <username>
 ```
 
-Ganti `hexa` dengan username desktop yang ingin dipakai untuk auto-login.
+Ganti `<username>` dengan username desktop yang ingin dipakai untuk auto-login.
 
 Setelah script selesai:
 
@@ -50,3 +50,16 @@ sudo reboot
 
 ## Catatan
 Jika suatu saat monitor fisik ingin dipakai kembali, hapus konfigurasi dummy di atas. Saat `xorg.conf` dummy aktif, monitor fisik biasanya tidak digunakan.
+
+
+## Security Note
+
+This setup may enable GDM auto-login for the selected desktop user.
+Use it only on trusted machines or controlled environments.
+
+Before sharing your own configuration, remove:
+- real usernames
+- hostnames
+- IP addresses
+- TeamViewer IDs
+- passwords, tokens, or private keys
